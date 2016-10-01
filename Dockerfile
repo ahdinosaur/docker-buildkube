@@ -4,7 +4,6 @@ MAINTAINER Michael Williams <michael.williams@enspiral.com>
 RUN apk add --no-cache jq python
 
 ENV \
-  PATH=/google-cloud-sdk/bin/${PATH} \
   GCLOUD_SDK_VERSION="128.0.0" \
   GCLOUD_SDK_SHASUM="feae23a6d3d29e8b13c235c59d0cbbed7e0f24bc"
 
@@ -20,6 +19,8 @@ RUN \
   (echo "${GCLOUD_SDK_SHASUM}  ${GCLOUD_SDK_FILENAME}" | sha1sum -c -) && \
   tar xf "${GCLOUD_SDK_FILENAME}"
 
+ENV PATH=/google-cloud-sdk/bin/:${PATH}
+
 RUN \
   sed -i -e 's/true/false/' /google-cloud-sdk/lib/googlecloudsdk/core/config.json; \
-  /google-cloud-sdk/bin/gcloud components install -q kubectl;
+  gcloud components install -q kubectl;
