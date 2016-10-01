@@ -1,0 +1,13 @@
+{
+  "name": "docker-buildkube",
+  "version": "1.0.0",
+  "description": "docker image for buildkite agent and kubernetes",
+  "main": "index.js",
+  "scripts": {
+    "build": "docker build -t ahdinosaur/buildkube .",
+    "example": "docker run -i ahdinosaur/buildkube",
+    "push": "docker push ahdinosaur/buildkube"
+  },
+  "author": "Mikey <michael.williams@enspiral.com> (http://dinosaur.is)",
+  "license": "ISC"
+}
