@@ -17,7 +17,8 @@ ADD ${GCLOUD_SDK_URL} ${GCLOUD_SDK_FILENAME}
 
 RUN \
   (echo "${GCLOUD_SDK_SHASUM}  ${GCLOUD_SDK_FILENAME}" | sha1sum -c -) && \
-  tar xf "${GCLOUD_SDK_FILENAME}"
+  tar xf "${GCLOUD_SDK_FILENAME}" && \
+  rm ${GCLOUD_SDK_FILENAME}
 
 ENV PATH=/google-cloud-sdk/bin/:${PATH}
 
